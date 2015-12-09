@@ -108,6 +108,9 @@ public class main extends javax.swing.JFrame {
         cocina5 = new javax.swing.JProgressBar();
         Camiones = new javax.swing.JFrame();
         jLabel6 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jButton15 = new javax.swing.JButton();
         Envios = new javax.swing.JFrame();
         jLabel7 = new javax.swing.JLabel();
         Rutas = new javax.swing.JFrame();
@@ -119,6 +122,7 @@ public class main extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salmans.jpg"))); // NOI18N
 
@@ -616,13 +620,33 @@ public class main extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salmans.jpg"))); // NOI18N
 
+        jLabel36.setText("Camiones disponibles:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Camion1", "Camion2", "Camion3", "Camion4", "Camion5" }));
+
+        jButton15.setText("Cargar a Camion");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CamionesLayout = new javax.swing.GroupLayout(Camiones.getContentPane());
         Camiones.getContentPane().setLayout(CamionesLayout);
         CamionesLayout.setHorizontalGroup(
             CamionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CamionesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(CamionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CamionesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CamionesLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel36)
+                        .addGap(18, 18, 18)
+                        .addGroup(CamionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton15)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         CamionesLayout.setVerticalGroup(
@@ -630,7 +654,13 @@ public class main extends javax.swing.JFrame {
             .addGroup(CamionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(CamionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addComponent(jButton15)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salmans.jpg"))); // NOI18N
@@ -719,6 +749,8 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+        jButton16.setText("Reporte");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -742,6 +774,10 @@ public class main extends javax.swing.JFrame {
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton16)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -758,7 +794,9 @@ public class main extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jButton16)
+                .addContainerGap())
         );
 
         pack();
@@ -819,6 +857,7 @@ public class main extends javax.swing.JFrame {
         int num;
         if (bodega_ingrediente.isEmpty()) {
             bodega_ingrediente.add(new Stack<String>());
+            bodega_reporte.add(new Stack<String>());
         }
         for (int i = 0; i < bodega_ingrediente.size(); i++) {
             if (!bodega_ingrediente.get(i).empty() && bodega_ingrediente.get(i).peek().contentEquals(nombre.getText())) {
@@ -827,16 +866,20 @@ public class main extends javax.swing.JFrame {
                 System.out.println(num);
                 for (int j = 0; j < num - 1; j++) {
                     bodega_ingrediente.get(i).push(nombre.getText());
+                    bodega_reporte.get(i).push(nombre.getText());
                 }
                 break;
             } else if (bodega_ingrediente.get(i).empty()) {
                 bodega_ingrediente.add(new Stack<String>());
+                bodega_reporte.add(new Stack<String>());
                 System.out.println("entro2");
                 bodega_ingrediente.get(i).push(nombre.getText());
+                bodega_reporte.get(i).push(nombre.getText());
                 num = Integer.parseInt(cantidad.getValue().toString());
                 System.out.println(num);
                 for (int j = 0; j < num - 1; j++) {
                     bodega_ingrediente.get(i).push(nombre.getText());
+                    bodega_reporte.get(i).push(nombre.getText());
                 }
                 break;
             }
@@ -868,6 +911,7 @@ public class main extends javax.swing.JFrame {
         resta = original - eliminado;
         if (resta <= 0) {
             bodega_ingrediente.get(ingrediente_cb.getSelectedIndex()).removeAllElements();
+            bodega_reporte.get(ingrediente_cb.getSelectedIndex()).removeAllElements();
             DefaultComboBoxModel modelo = new DefaultComboBoxModel();
             SpinnerNumberModel smodel = new SpinnerNumberModel();
             for (int i = 0; i < bodega_ingrediente.size(); i++) {
@@ -881,6 +925,7 @@ public class main extends javax.swing.JFrame {
         } else if (resta > 0) {
             for (int i = 0; i < eliminado; i++) {
                 bodega_ingrediente.get(ingrediente_cb.getSelectedIndex()).pop();
+                bodega_reporte.get(ingrediente_cb.getSelectedIndex()).pop();
                 DefaultComboBoxModel modelo = new DefaultComboBoxModel();
                 SpinnerNumberModel smodel = new SpinnerNumberModel();
                 for (int j = 0; j < bodega_ingrediente.size(); j++) {
@@ -1072,18 +1117,31 @@ public class main extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "No hay suficientes ingredintes en bodega!!!!");
                         }
+                        new Thread(new Hilo(orden.poll(), bodega_ingrediente, cocina4)).start();
                     } else {
-                        JOptionPane.showMessageDialog(null, "No hay de esete" + orden.peek().getLista_ingrediente().get(i) + "ingrediente");
+                        JOptionPane.showMessageDialog(null, "No hay " + orden.peek().getLista_ingrediente().get(i) + " ingrediente");
                         break;
                     }
                 }
             }
-            new Thread(new Hilo(orden.poll(), bodega_ingrediente, cocina4)).start();
         } else {
             JOptionPane.showMessageDialog(null, "No hay ni una orden");
         }
         c4.setSelected(false);
     }//GEN-LAST:event_c5ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        Producto[] temp = new Producto[10];
+        for(int j =donde;j<ventas.size();j++){
+            while(j<10 || j==ventas.size()){
+                temp[j]=ventas.get(j);
+                donde=j;
+            }
+        }
+        camiones.add(new Camion(temp));
+        System.out.println(camiones);
+    }//GEN-LAST:event_jButton15ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1147,6 +1205,8 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1155,6 +1215,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1184,6 +1245,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1202,9 +1264,11 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JSpinner tiempo;
     // End of variables declaration//GEN-END:variables
 ArrayList<Stack<String>> bodega_ingrediente = new ArrayList<Stack<String>>();
+ArrayList<Stack<String>> bodega_reporte = new ArrayList<Stack<String>>();
 ArrayList temp = new ArrayList();
 ArrayList<Producto> productos = new ArrayList<Producto>();
 Queue<Producto> orden = new LinkedList<Producto>();
 ArrayList<Producto> ventas= new ArrayList<Producto>();
-ArrayList camiones = new ArrayList();
+ArrayList<Camion> camiones = new ArrayList<Camion>();
+int donde =0;
 }
