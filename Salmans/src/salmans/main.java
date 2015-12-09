@@ -1283,19 +1283,20 @@ public class main extends javax.swing.JFrame {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         DefaultComboBoxModel model2 = new DefaultComboBoxModel();
         int[] nodo = grafo.getNodos();
-        for(int i=0;i<nodo.length;i++){
-            model.addElement(nodo[i]);
-            model2.addElement(nodo[i]);
+        for (int i = 0; i < nodo.length; i++) {
+            model.addElement(grafo.getNombreNodo(i));
+            model2.addElement(grafo.getNombreNodo(i));
         }
         inicio.setModel(model);
         end.setModel(model2);
+        ruta.setText("");
+        peso.setText("");
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-        int[] aristas = grafo.getAristas();
-        int peso1=aristas[inicio.getSelectedIndex()];
-        grafo.addArista(inicio.getSelectedIndex(), end.getSelectedIndex(), true, 20);
+        grafo.addArista(inicio.getSelectedIndex(), end.getSelectedIndex(), true, grafo.getPesosAristas().getValue(inicio.getSelectedIndex()));
+        //grafo.getfloyd();
         grafo.ver();
     }//GEN-LAST:event_jButton18ActionPerformed
 
@@ -1443,5 +1444,5 @@ ArrayList<Stack<String>> bodega_ingrediente = new ArrayList<Stack<String>>();
     ArrayList<Producto> ventas = new ArrayList<Producto>();
     ArrayList<Camion> camiones = new ArrayList<Camion>();
     Grafo grafo = new Grafo();
-    int numero=1;
+    int numero = 1;
 }

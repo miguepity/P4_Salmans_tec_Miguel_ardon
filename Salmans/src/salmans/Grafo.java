@@ -13,10 +13,11 @@ import grph.Grph;
 import cnrs.grph.set.IntSet;
 import grph.algo.AdjacencyMatrix;
 import grph.properties.IntProperty;
+import grph.algo.*;
 
 public class Grafo{
     Grph g;
-   
+  
     public Grafo()    { 
         g = new Grph();
     }
@@ -60,16 +61,13 @@ public class Grafo{
        
     }
     
+    public void getfloyd(){
+       g.floydWarshallAlgorithm.compute(g);
+        System.out.println(g.toString());
+       
+    }
     public void crearRedNodos(int ancho, int alto, boolean dirigido, boolean diagonales){
         g.grid(ancho, alto, dirigido, diagonales);
-    }
-    
-    public void setColorNodo(int nodo, int color){
-        g.getVertexColorProperty().setValue(nodo, color);
-    }
-    
-    public void setColorArista(int arista, int color){
-      g.getEdgeColorProperty().setValue(arista, color);
     }
     
     public int[] getNodos(){
@@ -95,8 +93,8 @@ public class Grafo{
     public void setNombreNodo(int nodo, String nombre){
         g.getVertexLabelProperty().setValue(nodo, nombre);
     }
-    public String getNombreNodo(){
-        String nombre = g.getVertexLabelProperty().getName();
+    public String getNombreNodo(int nodo){
+        String nombre = g.getVertexLabelProperty().getValue(nodo);
         return nombre;
     }
     
