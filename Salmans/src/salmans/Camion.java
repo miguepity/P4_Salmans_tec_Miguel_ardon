@@ -11,7 +11,7 @@ package salmans;
  */
 public class Camion {
 
-    Producto[] soporta =new Producto[10];
+    Producto[] soporta;
 
     public Camion() {
     }
@@ -26,6 +26,12 @@ public class Camion {
 
     public void setSoporta(Producto[] soporta) {
         this.soporta = soporta;
+    }
+
+    public void imprime() {
+        for(int i=0;i<10;i++){
+            System.out.println(soporta[i]);
+        }
     }
     
     

@@ -29,6 +29,10 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
+        grafo.addNodos(1);
+        grafo.setNombreNodo(0, "Salmans");
+        grafo.setPesoArista(0, 20);
+        //grafo.crearRedNodos(5, 5, true, false);
     }
 
     /**
@@ -108,13 +112,25 @@ public class main extends javax.swing.JFrame {
         cocina5 = new javax.swing.JProgressBar();
         Camiones = new javax.swing.JFrame();
         jLabel6 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
         jButton15 = new javax.swing.JButton();
         Envios = new javax.swing.JFrame();
         jLabel7 = new javax.swing.JLabel();
+        jButton18 = new javax.swing.JButton();
+        inicio = new javax.swing.JComboBox();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        end = new javax.swing.JComboBox();
         Rutas = new javax.swing.JFrame();
         jLabel8 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        ruta = new javax.swing.JTextField();
+        jButton17 = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        peso = new javax.swing.JTextField();
+        Reporte = new javax.swing.JFrame();
+        jLabel36 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_reporte = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -620,10 +636,6 @@ public class main extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salmans.jpg"))); // NOI18N
 
-        jLabel36.setText("Camiones disponibles:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Camion1", "Camion2", "Camion3", "Camion4", "Camion5" }));
-
         jButton15.setText("Cargar a Camion");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -641,12 +653,8 @@ public class main extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CamionesLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel36)
-                        .addGap(18, 18, 18)
-                        .addGroup(CamionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton15)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(257, 257, 257)
+                        .addComponent(jButton15)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         CamionesLayout.setVerticalGroup(
@@ -654,43 +662,105 @@ public class main extends javax.swing.JFrame {
             .addGroup(CamionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(CamionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(91, 91, 91)
                 .addComponent(jButton15)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salmans.jpg"))); // NOI18N
+
+        jButton18.setText("Mostrar");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        jLabel39.setText("De:");
+
+        jLabel40.setText("A");
 
         javax.swing.GroupLayout EnviosLayout = new javax.swing.GroupLayout(Envios.getContentPane());
         Envios.getContentPane().setLayout(EnviosLayout);
         EnviosLayout.setHorizontalGroup(
             EnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EnviosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(EnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EnviosLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EnviosLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel39)
+                        .addGap(42, 42, 42)
+                        .addComponent(inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel40)
+                        .addGap(105, 105, 105)
+                        .addComponent(end, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EnviosLayout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(jButton18)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         EnviosLayout.setVerticalGroup(
             EnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EnviosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addGroup(EnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel40)
+                    .addComponent(end, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addComponent(jButton18)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salmans.jpg"))); // NOI18N
+
+        jLabel37.setText("Ruta:");
+
+        jButton17.setText("Agregar");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+
+        jLabel38.setText("Distancia:");
+
+        peso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RutasLayout = new javax.swing.GroupLayout(Rutas.getContentPane());
         Rutas.getContentPane().setLayout(RutasLayout);
         RutasLayout.setHorizontalGroup(
             RutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RutasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(RutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RutasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(RutasLayout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addGroup(RutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RutasLayout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(jButton17))
+                            .addGroup(RutasLayout.createSequentialGroup()
+                                .addGroup(RutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel38)
+                                    .addComponent(jLabel37))
+                                .addGap(18, 18, 18)
+                                .addGroup(RutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ruta)
+                                    .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         RutasLayout.setVerticalGroup(
@@ -698,7 +768,45 @@ public class main extends javax.swing.JFrame {
             .addGroup(RutasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addGroup(RutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel37)
+                    .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(RutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addComponent(jButton17)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fotos/salmans.jpg"))); // NOI18N
+
+        txt_reporte.setEditable(false);
+        txt_reporte.setColumns(20);
+        txt_reporte.setRows(5);
+        jScrollPane1.setViewportView(txt_reporte);
+
+        javax.swing.GroupLayout ReporteLayout = new javax.swing.GroupLayout(Reporte.getContentPane());
+        Reporte.getContentPane().setLayout(ReporteLayout);
+        ReporteLayout.setHorizontalGroup(
+            ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReporteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        ReporteLayout.setVerticalGroup(
+            ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReporteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -750,6 +858,11 @@ public class main extends javax.swing.JFrame {
         });
 
         jButton16.setText("Reporte");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1021,9 +1134,6 @@ public class main extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "No hay suficientes ingredintes en bodega!!!!");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay de esete" + orden.peek().getLista_ingrediente().get(i) + "ingrediente");
-                        break;
                     }
                 }
             }
@@ -1045,9 +1155,6 @@ public class main extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "No hay suficientes ingredintes en bodega!!!!");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay de esete" + orden.peek().getLista_ingrediente().get(i) + "ingrediente");
-                        break;
                     }
                 }
             }
@@ -1069,9 +1176,6 @@ public class main extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "No hay suficientes ingredintes en bodega!!!!");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay de esete" + orden.peek().getLista_ingrediente().get(i) + "ingrediente");
-                        break;
                     }
                 }
             }
@@ -1093,9 +1197,6 @@ public class main extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "No hay suficientes ingredintes en bodega!!!!");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay de esete" + orden.peek().getLista_ingrediente().get(i) + "ingrediente");
-                        break;
                     }
                 }
             }
@@ -1117,31 +1218,90 @@ public class main extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "No hay suficientes ingredintes en bodega!!!!");
                         }
-                        new Thread(new Hilo(orden.poll(), bodega_ingrediente, cocina4)).start();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay " + orden.peek().getLista_ingrediente().get(i) + " ingrediente");
-                        break;
                     }
                 }
             }
+            new Thread(new Hilo(orden.poll(), bodega_ingrediente, cocina5)).start();
         } else {
             JOptionPane.showMessageDialog(null, "No hay ni una orden");
         }
-        c4.setSelected(false);
+        c5.setSelected(false);
     }//GEN-LAST:event_c5ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
         Producto[] temp = new Producto[10];
-        for(int j =donde;j<ventas.size();j++){
-            while(j<10 || j==ventas.size()){
-                temp[j]=ventas.get(j);
-                donde=j;
+        System.out.println(camiones);
+        System.out.println(ventas);
+        for (int j = 0; j < 10; j++) {
+            if (j == ventas.size()) {
+                break;
+            } else {
+                temp[j] = ventas.get(j);
             }
         }
         camiones.add(new Camion(temp));
-        System.out.println(camiones);
+
+        for (int i = 0; i < camiones.size(); i++) {
+
+            camiones.get(i).imprime();
+        }
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        Reporte.setTitle("Reportes");
+        Reporte.setVisible(true);
+        Reporte.pack();
+        int tiempo = 0;
+        double precio = 0.0;
+        for (int i = 0; i < ventas.size(); i++) {
+            tiempo += ventas.get(i).getTiempo();
+            precio += ventas.get(i).getPrecio();
+        }
+        txt_reporte.append("Reporte\n");
+        txt_reporte.append("Bodega al inicio del dia\n");
+        txt_reporte.append(bodega_reporte.toString() + "\n");
+        txt_reporte.append("Bodega al final del dia\n");
+        txt_reporte.append(bodega_ingrediente.toString() + "\n");
+        txt_reporte.append("Ordenes realizadas\n");
+        txt_reporte.append(ventas.toString() + "\n");
+        txt_reporte.append("Tiempo Total en Cocina\n");
+        txt_reporte.append(Integer.toString(tiempo) + "segundos" + "\n");
+        txt_reporte.append("Precio Total de Ventas\n");
+        txt_reporte.append("$." + Double.toString(precio) + "\n");
+
+
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        grafo.addNodos(1);
+        grafo.setNombreNodo(numero, ruta.getText());
+        grafo.setPesoArista(numero, Integer.parseInt(peso.getText()));
+        numero++;
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+        int[] nodo = grafo.getNodos();
+        for(int i=0;i<nodo.length;i++){
+            model.addElement(nodo[i]);
+            model2.addElement(nodo[i]);
+        }
+        inicio.setModel(model);
+        end.setModel(model2);
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+        int[] aristas = grafo.getAristas();
+        int peso1=aristas[inicio.getSelectedIndex()];
+        grafo.addArista(inicio.getSelectedIndex(), end.getSelectedIndex(), true, 20);
+        grafo.ver();
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void pesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1184,6 +1344,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JFrame Envios;
     private javax.swing.JFrame Ingrediente;
     private javax.swing.JFrame Producto;
+    private javax.swing.JFrame Reporte;
     private javax.swing.JFrame Rutas;
     private javax.swing.JCheckBox c1;
     private javax.swing.JCheckBox c2;
@@ -1198,7 +1359,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JProgressBar cocina5;
     private javax.swing.JComboBox eli_produ;
     private javax.swing.JSpinner eliminar;
+    private javax.swing.JComboBox end;
     private javax.swing.JComboBox ingrediente_cb;
+    private javax.swing.JComboBox inicio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1207,6 +1370,8 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1215,7 +1380,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1246,12 +1410,17 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox lista_ingre;
     private javax.swing.JSpinner mod_cocina;
     private javax.swing.JComboBox mod_listaingre;
@@ -1259,16 +1428,20 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField nombre_produc;
     private javax.swing.JComboBox orde_producto;
+    private javax.swing.JTextField peso;
     private javax.swing.JSpinner precio;
     private javax.swing.JComboBox producto;
+    private javax.swing.JTextField ruta;
     private javax.swing.JSpinner tiempo;
+    private javax.swing.JTextArea txt_reporte;
     // End of variables declaration//GEN-END:variables
 ArrayList<Stack<String>> bodega_ingrediente = new ArrayList<Stack<String>>();
-ArrayList<Stack<String>> bodega_reporte = new ArrayList<Stack<String>>();
-ArrayList temp = new ArrayList();
-ArrayList<Producto> productos = new ArrayList<Producto>();
-Queue<Producto> orden = new LinkedList<Producto>();
-ArrayList<Producto> ventas= new ArrayList<Producto>();
-ArrayList<Camion> camiones = new ArrayList<Camion>();
-int donde =0;
+    ArrayList<Stack<String>> bodega_reporte = new ArrayList<Stack<String>>();
+    ArrayList temp = new ArrayList();
+    ArrayList<Producto> productos = new ArrayList<Producto>();
+    Queue<Producto> orden = new LinkedList<Producto>();
+    ArrayList<Producto> ventas = new ArrayList<Producto>();
+    ArrayList<Camion> camiones = new ArrayList<Camion>();
+    Grafo grafo = new Grafo();
+    int numero=1;
 }
